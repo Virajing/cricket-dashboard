@@ -1,0 +1,230 @@
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* General Styles */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.live-indicator {
+    position: relative;
+}
+
+.live-indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    animation: pulse 1s infinite;
+}
+
+/* Score Card Styles */
+.team-info {
+    transition: transform 0.3s ease;
+}
+
+.team-info:hover {
+    transform: translateY(-2px);
+}
+
+/* Partnership Card Styles */
+.batsman-card {
+    transition: all 0.3s ease;
+}
+
+.batsman-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Recent Overs Styles */
+#recentOvers > div {
+    animation: slideIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+#recentOvers > div:nth-child(1) { animation-delay: 0.1s; }
+#recentOvers > div:nth-child(2) { animation-delay: 0.2s; }
+#recentOvers > div:nth-child(3) { animation-delay: 0.3s; }
+#recentOvers > div:nth-child(4) { animation-delay: 0.4s; }
+#recentOvers > div:nth-child(5) { animation-delay: 0.5s; }
+
+.ball {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 2px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.ball:hover {
+    transform: scale(1.1);
+}
+
+.ball-0 { background-color: #e5e7eb; color: #374151; }
+.ball-1, .ball-2, .ball-3 { background-color: #93c5fd; color: #1e40af; }
+.ball-4 { background-color: #86efac; color: #166534; }
+.ball-6 { background-color: #f87171; color: #991b1b; }
+.ball-W { background-color: #f43f5e; color: white; }
+
+/* Win Prediction Animation */
+.prediction-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Chart Containers */
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 300px;
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .col-span-2 {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-info h2 {
+        font-size: 1.1rem;
+    }
+    
+    .team-info p {
+        font-size: 1.5rem;
+    }
+    
+    .ball {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 0.875rem;
+    }
+    
+    #partnership {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .team-info {
+        text-align: center;
+    }
+    
+    .flex.justify-between {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #e5e7eb;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background-color: #3b82f6;
+    animation: loading 1.5s infinite ease-in-out;
+}
+
+@keyframes loading {
+    0% { left: -30%; }
+    100% { left: 100%; }
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Score Update Animation */
+.score-update {
+    animation: scoreUpdate 0.5s ease;
+}
+
+@keyframes scoreUpdate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #3b82f6; }
+    100% { transform: scale(1); }
+} 
