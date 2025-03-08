@@ -1,6 +1,6 @@
 // API Configuration
-const API_KEY = 'test-api-key';  // Any key will work with mock API
-const API_BASE_URL = 'http://localhost:3000';  // Mock API URL
+const API_KEY = 'a55db9ff-3c94-49d8-8fd3-e5ed81b83cbe';
+const API_BASE_URL = 'https://api.cricapi.com/v1';
 
 // API Endpoints
 const ENDPOINTS = {
